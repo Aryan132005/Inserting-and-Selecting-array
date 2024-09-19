@@ -1,0 +1,56 @@
+#include <stdio.h>
+void selection_sort(int arr[], int size);
+void insertion_sort(int arr[], int size);
+void swap(int *num1, int *num2);
+int main(){
+	printf("Enter the size of array : ");
+	int n, i,choice ;
+	scanf("%d",&n); int arr[n];
+	printf("Enter the elements of the array : ");
+	for(i=0; i<n; i++)
+	scanf("%d",&arr[i]);
+	printf("Enter the choice of sorting :\n");
+	printf("1 -> Selection Sort\n2 -> Insertion Sort\nYour choice : ");
+	scanf("%d",&choice);
+	switch(choice){
+		case 1 : selection_sort(arr, n);
+		break;
+		case 2: insertion_sort(arr, n);
+		break;
+		default : printf("Enter a valid choice.");
+	}
+	
+	printf("Array after sorting : ");
+	for(i=0; i<n; i++){
+		printf("%d ",arr[i]);
+	}
+	return 0;	
+}
+void selection_sort(int arr[], int size){
+	int i, j, mid;
+	for(i=0; i<size-1; i++){
+		mid=i;
+	for(j=i+1;j<size; j++){
+		if(arr[j]<arr[mid]){
+			mid=j;
+		}
+	}
+	if(i!=mid)
+	swap(&arr[i],&arr[mid]);
+}
+}
+void insertion_sort(int arr[], int size){
+	int i, j, temp;
+	for(i=1; i<size; i++){
+		temp=arr[i];
+	j=i-1;
+	while(j>=0 && temp<=arr[j]){
+		arr[j+1]=arr[j];
+		j--;
+	}
+	arr[j+1]=temp;
+	}
+}
+void swap(int *num1, int *num2){
+	*num1=(*num1+*num2)-(*num2=*num1);
+}
